@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Chat</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body class="p-4">
+  <div class="container">
+    <h3>Chat Assistant</h3>
+    <div id="chatbox" style="height:300px;overflow:auto;background:#f8f9fa;padding:10px;border-radius:8px;"></div>
+    <div class="input-group mt-3">
+      <input id="msg" class="form-control" placeholder="Ask about a plant (e.g., Lettuce)"/>
+      <button class="btn btn-primary" id="send">Send</button>
+    </div>
+  </div>
+
+<script>
+async function sendMsg(text){
+  const res = await fetch("/chat", {
+    method:"POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({message: text})
+  });
+  return res.json();
+}
+
+document.getElementById("send").addEventListener("click", async ()=>{
+  const txt = document.getElementById("msg").value.trim();
+  if(!txt) return;
+  const box = document.getElementById("chatbox");
+  box.innerHTML += `<div><b>You:</b> ${txt}</div>`;
+  const resp = await sendMsg(txt);
+  box.innerHTML += `<div class="text-success"><b>Bot:</b> ${resp.response || resp.reply}</div>`;
+  document.getElementById("msg").value = "";
+  box.scrollTop = box.scrollHeight;
+});
+</script>
+</body>
+</html>

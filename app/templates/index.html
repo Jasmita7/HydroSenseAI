@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>HydroSense</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+body {
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #e0f7fa, #ffffff);
+    color: #333;
+}
+
+/* Headings */
+h1 {
+    font-weight: 700;
+    color: #00695c;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Tabs */
+.tab-btn {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #ffffff;
+    border: 1px solid #b2dfdb;
+    color: #00695c;
+    font-weight: 500;
+}
+.tab-btn:hover {
+    background: #004d40;
+    color: #fff;
+}
+.active-tab {
+    background: #00695c;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Cards */
+.card {
+    border-radius: 16px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: #ffffffee; /* slightly transparent for gradient body */
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+/* Form Inputs */
+input.form-control {
+    border-radius: 12px;
+    border: 1px solid #b2dfdb;
+    transition: all 0.2s ease;
+}
+input.form-control:focus {
+    border-color: #00695c;
+    box-shadow: 0 0 5px rgba(0,105,92,0.3);
+    outline: none;
+}
+
+/* Buttons */
+.btn-primary {
+    background: #00796b;
+    border: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background: #004d40;
+    transform: translateY(-2px);
+}
+.btn-outline-secondary {
+    border-radius: 12px;
+    border-color: #00796b;
+    color: #00796b;
+}
+.btn-outline-secondary:hover {
+    background: #00796b;
+    color: white;
+    transform: translateY(-2px);
+}
+.btn-info {
+    background: #26a69a;
+    border: none;
+    border-radius: 12px;
+}
+.btn-info:hover {
+    background: #00796b;
+    transform: translateY(-2px);
+}
+
+/* Image preview */
+.img-preview {
+    border-radius: 12px;
+    border: 2px solid #b2dfdb;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* Floating chatbot button & container */
+#chatbot-toggle-button {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 1000;
+}
+#chatbot-toggle-button img{
+    width: 100%;
+    height: 100%;
+}
+
+#chatbot-container {
+    position: fixed;
+    bottom: 70px;
+    right: 10px;
+    width: 280px;
+    height: 380px;
+    max-height: calc(100vh - 60px);
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+}
+#chatbot-header {
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+    font-weight: bold;
+    background: #0d6efd;
+    color: white;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+#chat-box {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+}
+#chat-input {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+    border-top: 1px solid #ddd;
+}
+
+/* Cards */
+.card{border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+.btn-primary, .btn-info{border-radius:8px;}
+</style>
+</head>
+<body>
+<div class="container">
+<h1 class="mb-4">🌿 HydroSense</h1>
+
+<!-- Tabs -->
+<div class="mb-3 d-flex gap-2">
+  <div id="tab-hydro" class="tab-btn p-2 border active-tab rounded">Hydroponics Check</div>
+  <div id="tab-disease" class="tab-btn p-2 border rounded">Disease Prediction</div>
+</div>
+
+<!-- Hydroponics Section -->
+<div id="section-hydro">
+  <div class="card mb-3 p-3">
+    <h5>Quick Hydroponics Check</h5>
+    <form id="predict-form">
+      <input class="form-control mb-2" id="plant_name" placeholder="Plant name"/>
+      <div class="row g-2">
+        <div class="col"><input id="temperature_c" class="form-control" placeholder="Temperature °C"/></div>
+        <div class="col"><input id="humidity_pct" class="form-control" placeholder="Humidity %"/></div>
+      </div>
+      <div class="row g-2 mt-2">
+        <div class="col"><input id="ph" class="form-control" placeholder="pH"/></div>
+        <div class="col"><input id="nutrient_ppm" class="form-control" placeholder="Nutrients ppm"/></div>
+      </div>
+      <button type="submit" class="btn btn-primary mt-2">Check</button>
+      <button id="resetBtn" type="button" class="btn btn-outline-secondary mt-2">Reset</button>
+    </form>
+    <div id="result" class="mt-3"></div>
+  </div>
+</div>
+
+<!-- Disease Section -->
+<div id="section-disease" style="display:none;">
+  <div class="card mb-3 p-3">
+    <h5>Plant Disease Detection</h5>
+    <input type="file" id="diseaseFile" class="form-control mb-2" accept=".jpg,.jpeg,.png"/>
+    <img id="imagePreview" class="img-preview" src="#" style="display:none;"/>
+    <button id="btn-predict" class="btn btn-info mt-2">Predict Disease</button>
+    <div id="diseaseResult" class="mt-2"></div>
+  </div>
+</div>
+</div>
+
+<!-- Floating chatbot button -->
+<div id="chatbot-toggle-button">
+  <img src="{{ url_for('static', filename='chat.png') }}" alt="Chatbot Icon">
+</div>
+
+<!-- Chatbot container -->
+<div id="chatbot-container">
+  <div id="chatbot-header">Hydroponics Assistant Chat</div>
+  <div id="chat-box"></div>
+  <input id="chat-input" type="text" placeholder="Ask me..." onkeypress="if(event.key==='Enter') sendMessage()">
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", ()=>{
+
+  // Tabs
+  document.getElementById("tab-hydro").addEventListener("click",()=>{
+    document.getElementById("section-hydro").style.display="block";
+    document.getElementById("section-disease").style.display="none";
+    document.getElementById("tab-hydro").classList.add("active-tab");
+    document.getElementById("tab-disease").classList.remove("active-tab");
+  });
+  document.getElementById("tab-disease").addEventListener("click",()=>{
+    document.getElementById("section-hydro").style.display="none";
+    document.getElementById("section-disease").style.display="block";
+    document.getElementById("tab-disease").classList.add("active-tab");
+    document.getElementById("tab-hydro").classList.remove("active-tab");
+  });
+
+  // Chatbot toggle
+  const toggleBtn = document.getElementById('chatbot-toggle-button');
+  const container = document.getElementById('chatbot-container');
+  toggleBtn.addEventListener('click', ()=>{
+    container.style.display = (container.style.display==='flex' || container.style.display==='') ? 'none' : 'flex';
+    const chatBox = document.getElementById("chat-box");
+    chatBox.scrollTop = chatBox.scrollHeight;
+  });
+
+  // Hydroponics Check AJAX
+  const predictForm = document.getElementById("predict-form");
+  const resultDiv = document.getElementById("result");
+  predictForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const plant_name = document.getElementById("plant_name").value.trim();
+      const temperature_c = document.getElementById("temperature_c").value.trim();
+      const humidity_pct = document.getElementById("humidity_pct").value.trim();
+      const ph = document.getElementById("ph").value.trim();
+      const nutrient_ppm = document.getElementById("nutrient_ppm").value.trim();
+
+      if (!plant_name) { resultDiv.innerHTML = `<div class="text-danger">Please enter a plant name.</div>`; return; }
+
+      try {
+          const response = await fetch("/predict", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ plant_name, temperature_c, humidity_pct, ph, nutrient_ppm })
+          });
+          const data = await response.json();
+          if (response.ok) {
+              let suggestionsHTML = "";
+              if (data.suggestions) {
+                  suggestionsHTML = "<ul>";
+                  data.suggestions.forEach(s => suggestionsHTML += `<li>${s.message}</li>`);
+                  suggestionsHTML += "</ul>";
+              }
+              resultDiv.innerHTML = `
+                  <h6>Optimal Conditions for ${data.plant_name}:</h6>
+                  <ul>
+                      <li>🌡 Temperature: ${data.optimal.optimal_temp_c}°C</li>
+                      <li>⚗️ pH: ${data.optimal.optimal_ph}</li>
+                      <li>💧 Humidity: ${data.optimal.optimal_humidity}%</li>
+                      <li>🥗 Nutrients: ${data.optimal.optimal_nutrient_ppm} ppm</li>
+                  </ul>
+                  <h6>Suggestions:</h6>
+                  ${suggestionsHTML}
+              `;
+          } else { resultDiv.innerHTML = `<div class="text-danger">${data.error}</div>`; }
+      } catch(err){ console.error(err); resultDiv.innerHTML = `<div class="text-danger">Server error. Try again.</div>`; }
+  });
+
+  // Reset form
+  document.getElementById("resetBtn").addEventListener("click", () => {
+      predictForm.reset();
+      resultDiv.innerHTML = "";
+  });
+
+  // Disease Prediction AJAX
+  const diseaseFile = document.getElementById("diseaseFile");
+  const imagePreview = document.getElementById("imagePreview");
+  const diseaseResult = document.getElementById("diseaseResult");
+  const btnPredict = document.getElementById("btn-predict");
+
+  diseaseFile.addEventListener("change", () => {
+      const file = diseaseFile.files[0];
+      if(file){
+          imagePreview.src = URL.createObjectURL(file);
+          imagePreview.style.display = "block";
+          diseaseResult.innerHTML = "";
+      }
+  });
+
+  btnPredict.addEventListener("click", async () => {
+      const file = diseaseFile.files[0];
+      if(!file){ diseaseResult.innerHTML = `<div class="text-danger">Please select an image.</div>`; return; }
+      const formData = new FormData();
+      formData.append("file", file);
+
+      try {
+          const res = await fetch("/disease-predict", { method:"POST", body: formData });
+          const data = await res.json();
+          if(data.error){ diseaseResult.innerHTML = `<div class="text-danger">${data.error}</div>`; }
+          else{
+              diseaseResult.innerHTML = `<h6>Disease Prediction:</h6>
+                                         <p>🌿 ${data.disease} (${data.confidence}%)</p>`;
+          }
+      } catch(err){ console.error(err); diseaseResult.innerHTML = `<div class="text-danger">Server error. Try again.</div>`; }
+  });
+
+}); // DOMContentLoaded
+
+// Chat send function (unchanged)
+function sendMessage() {
+  const input = document.getElementById("chat-input");
+  const msg = input.value.trim();
+  if(!msg) return;
+  const chatBox = document.getElementById("chat-box");
+  chatBox.innerHTML += `<div class="user"><b>You:</b> ${msg}</div>`;
+  fetch("/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: msg })
+  })
+  .then(res=>res.json())
+  .then(data=>{
+    chatBox.innerHTML += `<div class="bot"><b>Bot:</b> ${data.reply}</div>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+  })
+  .catch(err=>{
+    console.error(err);
+    chatBox.innerHTML += `<div class="bot"><b>Bot:</b> Sorry, I couldn't get a response.</div>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+  });
+  input.value = "";
+}
+</script>
+</body>
+</html>
