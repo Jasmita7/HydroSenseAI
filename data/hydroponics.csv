@@ -1,0 +1,201 @@
+plant_name,optimal_temp_c,optimal_ph,optimal_humidity,optimal_nutrient_ppm
+Tomato,22.5,5.55,69.3,331
+Lettuce,29.4,6.45,52.5,618.8
+Spinach,26.8,5.97,54.8,624.4
+Basil,25.2,6.26,77,682.5
+Cucumber,19.9,6.86,68.2,735.7
+Strawberry,19.9,5.87,50.3,885.5
+Bell Pepper,18.7,6.12,53,609.8
+Eggplant,28.4,6.63,69.9,493.8
+Mint,25.2,5.84,50.2,777.1
+Kale,26.5,5.62,54.8,462.5
+Broccoli,18.2,5.93,66.5,563.4
+Cauliflower,29.6,5.74,70.8,347.1
+Celery,28,6.89,69.6,315.2
+Coriander,20.5,6.71,56.7,877.6
+Chives,20.2,6.45,71.4,801.6
+Dill,20.2,6.81,57.1,717.6
+Parsley,21.7,6.71,59.8,545.4
+Rosemary,24.3,5.78,72.4,404
+Thyme,23.2,6.84,69.5,393.9
+Sage,21.5,6.31,75.5,450.1
+Oregano,25.3,6.71,69.7,629.5
+Pea,19.7,6.84,67,728.8
+Bean,21.5,5.98,52.8,696.1
+Onion,22.4,5.67,61,468
+Garlic,23.5,5.84,58,872.9
+Chili,27.4,6.14,57.3,742.7
+Papaya,20.4,6.73,79.2,632.6
+Banana,24.2,6.79,61.8,667
+Pumpkin,25.1,5.51,76.8,551.8
+Melon,18.6,6.27,68.9,448.6
+Okra,25.3,6.13,73.8,513.6
+Beetroot,20,5.83,65.1,754.7
+Carrot,18.8,5.68,67.3,308.6
+Radish,29.4,6.01,64.8,369.6
+Cabbage,29.6,6.91,55.9,327.6
+Corn,27.7,5.98,71.7,324.4
+Ginger,21.7,6.28,58.4,813.3
+Turmeric,19.2,6.55,50.7,722.2
+Methi,26.2,6.05,69.4,584.5
+Fenugreek,23.3,6.96,55.3,358.7
+Arugula,19.5,6.94,78.2,595
+Zucchini,23.9,5.88,78.6,584.1
+Mustard,18.4,6.25,77.4,403.9
+Taro,28.9,5.95,61.1,560.3
+Peanut,21.1,5.93,50.5,539.1
+Sunflower,26,5.56,77.8,669.5
+Peach,21.7,6.41,62.8,681.1
+Pear,24.2,6.25,79,327.2
+Apple,24.6,5.58,78.9,524.8
+Grape,20.2,5.92,75.6,675.5
+Orange,29.6,6.86,58.8,601.9
+Lemon,27.3,5.86,61.6,813.9
+Watermelon,29.3,5.72,75.5,695.2
+Mango,28.7,6.23,59.5,397.8
+Guava,25.2,6.98,55.1,342.3
+Lychee,29.1,5.86,66.7,685.5
+Jackfruit,19.1,6.51,78.1,315.9
+Dragonfruit,20.4,6.64,70.9,651.5
+Blueberry,18.5,5.86,67.1,864.1
+Blackberry,21.9,6.59,52.9,645.3
+Cherry,22.7,6.05,68.5,532.9
+Pineapple,21.3,6.45,79.7,686
+Avocado,27.9,6.45,54.2,575
+Coconut,22.3,6.3,65.5,627.4
+Paprika,21.4,5.64,76.3,864.9
+Turnip,24.5,6.75,72.2,531.7
+Spinach Red,19.7,5.98,70.9,876.7
+Lettuce Romaine,27.6,5.78,71.1,843.2
+Lettuce Iceberg,18.9,5.56,60.8,417.5
+Cucumber Mini,29.8,6.39,58.8,341.6
+Cucumber Long,27.3,6.52,74.3,360.5
+Mint Spear,20.4,5.52,74.3,310.9
+Mint Peppermint,18.1,6.27,76,356.7
+Parsley Italian,27.8,5.84,77.4,709.8
+Parsley Curly,26.5,6.47,65.3,342.7
+Rosemary Blue,26.7,5.76,65,491.4
+Basil Thai,27.3,6.54,73.9,806.9
+Basil Sweet,18.9,6.08,69.5,314
+Chili Green,22.3,6.91,71.1,788.7
+Chili Red,19.4,5.71,73.9,469.1
+Pepper Jalapeno,28.4,6.01,76.7,370.9
+Pepper Habanero,25.5,5.67,60.1,718
+Melon Honeydew,22,6.89,61.3,677.4
+Melon Cantaloupe,18.8,6.82,52.8,826.5
+Pumpkin Mini,21.7,5.89,67.3,741
+Pumpkin Giant,21.9,6.49,51.1,782.1
+Tomato Cherry,26.8,6.73,64,469.2
+Tomato Heirloom,25.7,6.33,66.3,406.5
+Tomato Roma,28.6,6.29,58.6,750.4
+Strawberry Alpine,23.7,5.86,67.7,784.1
+Strawberry Wild,19.4,5.64,50.9,894.3
+Eggplant Round,26.6,6.85,51.1,547.6
+Eggplant Long,27.1,6.85,74.7,523.2
+Kale Curly,24.7,6.45,60.8,765.8
+Kale Dinosaur,27.3,6.01,53.8,504.5
+Lettuce Butterhead,23.9,6.02,65.7,858.5
+Spinach Baby,24.3,6.59,73.1,815
+Bok Choy,23.1,6.85,56.5,557.4
+Swiss Chard,18.3,6.83,68.7,750.5
+Brinjal,19.3,6.67,52.6,752.7
+Physalis (Cape gooseberry),26.4,5.69,63,1513
+Mustard greens,21,5.88,64,875
+Mustard (Leaf),21.3,6.18,59,984
+Spinach (Savoy),19.4,5.97,63,955
+Fennel,24.4,6.09,51,1196
+Wasabi (Japanese horseradish),18.5,6.07,70,1033
+Elderberry (dwarf),26.3,5.86,65,1409
+Cucumber (Pickling),26.6,5.87,66,1636
+Tomato (Cherry),24.8,5.91,70,1653
+Lovage,21.9,6.17,59,1071
+Cabbage (Green),24.4,5.98,50,977
+Basil (Sweet),22.3,5.82,53,930
+Microgreens (Sunflower),20.3,6.19,61,904
+Spinach (Smooth),18.8,5.84,64,822
+Pea (Sugar snap),23.9,6.25,61,1138
+Goji berry,26.7,5.71,75,1450
+Chervil,22.9,5.93,60,1200
+Broad bean,22.4,6.11,59,1041
+Kale (Lacinato),20.9,6,67,859
+Cucumber (Slicing),23.8,5.68,73,1433
+Lime (dwarf),22.2,5.91,64,955
+Passionfruit (dwarf),26.7,5.52,69,1401
+Tarragon,23,5.93,53,926
+Sea beet,18.2,6.23,64,1025
+Chamomile,20.9,5.96,64,1137
+Mallow,22.3,5.81,54,1078
+Valerian,24.1,6.08,51,1067
+Stevia,19.8,5.82,57,1077
+Lettuce (Butterhead),20.6,5.95,66,847
+Cucumber (Mini),24.4,5.52,70,1580
+Cabbage (Red),20.2,6.12,55,1088
+Kale (Curly),18.2,5.87,58,961
+"Grape (table, dwarf)",26.4,5.73,64,1677
+Sweet pepper (mini),26,5.9,69,1441
+Bell pepper (yellow),26.7,5.65,69,1653
+Fava bean,24.9,6.12,62,1017
+Microgreens (Pea),19.1,5.88,67,918
+Artichoke (globe),21.2,6.15,50,1091
+Microgreens (Amaranth),21.7,6.05,56,963
+Sorrel,24,6.1,61,1128
+Fig (dwarf),25.7,5.9,66,1357
+Asparagus (baby),19.2,6.01,67,1171
+Melon (Honeydew),26.1,5.7,75,1501
+Moringa (young),19.5,6.11,62,991
+Papaya (dwarf),23.5,5.6,66,1751
+Micro basil,19.7,5.96,68,813
+Pak choi (Baby bok choy),20.1,6.08,55,965
+Echinacea (young),23.1,6.22,70,1101
+Mizuna,20.6,5.94,70,979
+Eggplant (Aubergine),26.1,5.76,70,1355
+Kumquat,24.8,5.79,62,1094
+Celeriac,20.1,5.77,52,1182
+Napa cabbage,22.9,5.74,54,1007
+Pepper (Bell),25.9,5.65,69,1399
+Cilantro (Coriander),22.2,6.32,60,924
+Hyssop,23.2,5.8,53,949
+Pepper (Chili),23.8,5.78,65,1743
+Mulberry (dwarf),23.2,5.8,61,1224
+Parsley (Flat-leaf),20.6,5.8,59,850
+Chaya (Tree spinach),21.4,6.01,57,839
+Tatsoi,19.9,5.82,62,953
+Lovage,23.8,5.8,53,1143
+Leek,21.6,5.87,64,1079
+Lemongrass,20.6,6.21,58,964
+Sweet corn (dwarf),24.6,5.83,58,1197
+Microgreens (Broccoli),19.1,6.07,62,922
+Kohlrabi,19.2,6.18,63,947
+Angelica,22,6.29,58,1069
+Collard greens,24.5,6.05,66,1025
+Tomato (Beefsteak),23.1,5.72,60,1798
+Nasturtium (edible),19.8,6.19,69,1139
+Soybean (edamame),24.9,5.94,50,1118
+Raspberry,23.7,5.67,75,1546
+Brussels sprouts,21.8,5.95,66,1017
+Poppy (edible),20.7,6.03,52,1027
+Parsley (Curly),20.4,6.39,61,1003
+Bay leaf,21.3,5.81,58,945
+Caper,23.7,5.71,55,1072
+Turmeric (small),18.2,6.12,64,1007
+Lettuce (Romaine),20,5.85,61,918
+Shiso (Perilla),21.8,5.82,54,1059
+Melon (Cantaloupe),23.2,5.63,65,1690
+Endive,19.3,5.71,54,1120
+Basil (Thai),21.2,6.28,65,1032
+Pea (Snow),24.4,5.77,59,906
+Aubergine (mini),22.3,5.7,58,1123
+Bayberry,26.1,5.8,69,1649
+Rapini (Broccoli rabe),20.8,5.74,50,1051
+Savoury,22.9,5.94,52,1029
+Lettuce (Oakleaf),21.7,5.95,61,988
+Cranberry,23.3,5.75,65,1476
+Herb Robert,20.4,6.24,65,1011
+Sweet potato (vining),20.2,6.12,75,1266
+Watercress,18.3,6.14,57,980
+Purslane,23.6,5.91,66,1031
+Microgreens (Radish),18.1,6,55,913
+Lemon (dwarf),21.4,5.77,53,1124
+Borage,20.5,6.25,53,1074
+Calendula,20.5,5.89,59,1079
+Tomato (Heirloom),23.1,5.71,60,1476
