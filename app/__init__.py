@@ -1,20 +1,19 @@
 from flask import Flask
-from pymongo import MongoClient
+from flask_pymongo import PyMongo
+from flask_bcrypt import Bcrypt
 import os
+
+mongo = PyMongo()
+bcrypt = Bcrypt()  # Correct
 
 def create_app():
     app = Flask(__name__, template_folder="templates", static_folder="static")
     app.secret_key = os.environ.get("FLASK_SECRET", "super_secret_key")
+    app.config["MONGO_URI"] = os.environ.get("MONGO_URI", "mongodb://localhost:27017/hydroponics_ai")
 
-    # MongoDB (optional) — if not needed you can remove these lines
-    try:
-        client = MongoClient(os.environ.get("MONGO_URI", "mongodb://localhost:27017/"))
-        db = client["hydroponics_ai"]
-        app.config["db"] = db
-    except Exception:
-        app.config["db"] = None
+    mongo.init_app(app)
+    bcrypt.init_app(app)  # Correct
 
-    # register blueprint
     from app.routes import main
     app.register_blueprint(main)
 
