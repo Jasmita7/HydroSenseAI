@@ -44,7 +44,7 @@ h1 {
     border-radius: 16px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    background: #ffffffee; /* slightly transparent for gradient body */
+    background: #ffffffee;
 }
 .card:hover {
     transform: translateY(-4px);
@@ -103,7 +103,6 @@ input.form-control:focus {
     height: auto;
 }
 
-
 /* Floating chatbot button & container */
 #chatbot-toggle-button {
     position: fixed;
@@ -118,7 +117,6 @@ input.form-control:focus {
     width: 100%;
     height: 100%;
 }
-
 #chatbot-container {
     position: fixed;
     bottom: 70px;
@@ -154,60 +152,99 @@ input.form-control:focus {
     border-top: 1px solid #ddd;
 }
 
-/* Cards */
+/* Cards & buttons */
 .card{border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);}
 .btn-primary, .btn-info{border-radius:8px;}
 </style>
 </head>
 <body>
+
 <div class="container">
-<h1 class="mb-4">🌿 HydroSense</h1>
 
-<!-- Tabs -->
-<div class="mb-3 d-flex gap-2">
-  <div id="tab-hydro" class="tab-btn p-2 border active-tab rounded">Hydroponics Check</div>
-  <div id="tab-disease" class="tab-btn p-2 border rounded">Disease Prediction</div>
-</div>
+  <!-- Login/Register Forms -->
+  <div id="auth-container">
 
-<!-- Hydroponics Section -->
-<div id="section-hydro">
-  <div class="card mb-3 p-3">
-    <h5>Quick Hydroponics Check</h5>
-    <form id="predict-form">
-      <input class="form-control mb-2" id="plant_name" placeholder="Plant name"/>
-      <div class="row g-2">
-        <div class="col"><input id="temperature_c" class="form-control" placeholder="Temperature °C"/></div>
-        <div class="col"><input id="humidity_pct" class="form-control" placeholder="Humidity %"/></div>
-      </div>
-      <div class="row g-2 mt-2">
-        <div class="col"><input id="ph" class="form-control" placeholder="pH"/></div>
-        <div class="col"><input id="nutrient_ppm" class="form-control" placeholder="Nutrients ppm"/></div>
-      </div>
-      <button type="submit" class="btn btn-primary mt-2">Check</button>
-      <button id="resetBtn" type="button" class="btn btn-outline-secondary mt-2">Reset</button>
-    </form>
-    <div id="result" class="mt-3"></div>
+    <!-- Login Card -->
+    <div id="login-card" class="card p-4 mx-auto" style="max-width:400px; display:block;">
+      <h3 class="text-center mb-3 text-success">🌿 HydroSense Login</h3>
+      <form id="loginForm">
+        <input type="email" class="form-control mb-2" id="loginEmail" placeholder="Email" required>
+        <input type="password" class="form-control mb-2" id="loginPassword" placeholder="Password" required>
+        <button class="btn btn-primary w-100" type="submit">Login</button>
+        <p class="mt-3 text-center">New user? <a href="#" id="showRegister" class="text-success">Register</a></p>
+      </form>
+      <div id="loginMsg" class="mt-2 text-center"></div>
+    </div>
+
+    <!-- Register Card -->
+    <div id="register-card" class="card p-4 mx-auto" style="max-width:400px; display:none;">
+      <h3 class="text-center mb-3 text-success">🌿 HydroSense Register</h3>
+      <form id="registerForm">
+        <input type="text" class="form-control mb-2" id="regName" placeholder="Full Name" required>
+        <input type="email" class="form-control mb-2" id="regEmail" placeholder="Email" required>
+        <input type="password" class="form-control mb-2" id="regPassword" placeholder="Password" required>
+        <button class="btn btn-primary w-100" type="submit">Register</button>
+        <p class="mt-3 text-center">Already have an account? <a href="#" id="showLogin" class="text-success">Login</a></p>
+      </form>
+      <div id="regMsg" class="mt-2 text-center"></div>
+    </div>
+
   </div>
-</div>
 
-<!-- Disease Section -->
-<div id="section-disease" style="display:none;">
-  <div class="card mb-3 p-3">
-    <h5>Plant Disease Detection</h5>
-    <input type="file" id="diseaseFile" class="form-control mb-2" accept=".jpg,.jpeg,.png"/>
-    <img id="imagePreview" class="img-preview" src="#" style="display:none;"/>
-    <button id="btn-predict" class="btn btn-info mt-2">Predict Disease</button>
-    <div id="diseaseResult" class="mt-2"></div>
+  <!-- Logout Button -->
+  <div id="logout-container" class="text-end mb-3" style="display:none;">
+    <button id="logoutBtn" class="btn btn-outline-secondary">Logout</button>
   </div>
-</div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" style="display:none;">
+    <h1 class="mb-4">🌿 HydroSense</h1>
+
+    <!-- Tabs -->
+    <div class="mb-3 d-flex gap-2">
+      <div id="tab-hydro" class="tab-btn p-2 border active-tab rounded">Hydroponics Check</div>
+      <div id="tab-disease" class="tab-btn p-2 border rounded">Disease Prediction</div>
+    </div>
+
+    <!-- Hydroponics Section -->
+    <div id="section-hydro">
+      <div class="card mb-3 p-3">
+        <h5>Quick Hydroponics Check</h5>
+        <form id="predict-form">
+          <input class="form-control mb-2" id="plant_name" placeholder="Plant name"/>
+          <div class="row g-2">
+            <div class="col"><input id="temperature_c" class="form-control" placeholder="Temperature °C"/></div>
+            <div class="col"><input id="humidity_pct" class="form-control" placeholder="Humidity %"/></div>
+          </div>
+          <div class="row g-2 mt-2">
+            <div class="col"><input id="ph" class="form-control" placeholder="pH"/></div>
+            <div class="col"><input id="nutrient_ppm" class="form-control" placeholder="Nutrients ppm"/></div>
+          </div>
+          <button type="submit" class="btn btn-primary mt-2">Check</button>
+          <button id="resetBtn" type="button" class="btn btn-outline-secondary mt-2">Reset</button>
+        </form>
+        <div id="result" class="mt-3"></div>
+      </div>
+    </div>
+
+    <!-- Disease Section -->
+    <div id="section-disease" style="display:none;">
+      <div class="card mb-3 p-3">
+        <h5>Plant Disease Detection</h5>
+        <input type="file" id="diseaseFile" class="form-control mb-2" accept=".jpg,.jpeg,.png"/>
+        <img id="imagePreview" class="img-preview" src="#" style="display:none;"/>
+        <button id="btn-predict" class="btn btn-info mt-2">Predict Disease</button>
+        <div id="diseaseResult" class="mt-2"></div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
-<!-- Floating chatbot button -->
+<!-- Floating Chatbot -->
 <div id="chatbot-toggle-button">
   <img src="{{ url_for('static', filename='chat.png') }}" alt="Chatbot Icon">
 </div>
-
-<!-- Chatbot container -->
 <div id="chatbot-container">
   <div id="chatbot-header">Hydroponics Assistant Chat</div>
   <div id="chat-box"></div>
@@ -216,6 +253,69 @@ input.form-control:focus {
 
 <script>
 document.addEventListener("DOMContentLoaded", ()=>{
+
+  // Show register/login toggles
+  document.getElementById("showRegister").addEventListener("click", ()=> {
+    document.getElementById("login-card").style.display="none";
+    document.getElementById("register-card").style.display="block";
+  });
+  document.getElementById("showLogin").addEventListener("click", ()=> {
+    document.getElementById("register-card").style.display="none";
+    document.getElementById("login-card").style.display="block";
+  });
+
+  // Login form
+  document.getElementById("loginForm").addEventListener("submit", async(e)=>{
+    e.preventDefault();
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
+    const res = await fetch("/login",{method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({email,password})});
+    const data = await res.json();
+    const msg = document.getElementById("loginMsg");
+    if(res.ok){
+      msg.innerHTML=`<span class="text-success">${data.message}</span>`;
+      document.getElementById("auth-container").style.display="none";
+      document.getElementById("logout-container").style.display="block";
+      document.getElementById("dashboard").style.display="block";
+    } else { msg.innerHTML=`<span class="text-danger">${data.error}</span>`; }
+  });
+
+document.getElementById("registerForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = document.getElementById("regName").value.trim();
+    const email = document.getElementById("regEmail").value.trim();
+    const password = document.getElementById("regPassword").value.trim();
+
+    const res = await fetch("/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password })
+    });
+
+    const data = await res.json();
+    const msg = document.getElementById("regMsg");
+
+    if (res.ok) {
+        msg.innerHTML = `<span class="text-success">${data.message}</span>`;
+        setTimeout(() => {
+            document.getElementById("register-card").style.display = "none";
+            document.getElementById("login-card").style.display = "block";
+            msg.innerHTML = "";
+        }, 1000);
+    } else {
+        msg.innerHTML = `<span class="text-danger">${data.error}</span>`;
+    }
+});
+
+  // Logout button
+  document.getElementById("logoutBtn").addEventListener("click", ()=>{
+    document.getElementById("auth-container").style.display="block";
+    document.getElementById("logout-container").style.display="none";
+    document.getElementById("dashboard").style.display="none";
+    document.getElementById("loginForm").reset();
+  });
+
+  // --- Original Dashboard JS (Tabs, Hydroponics, Disease, Chatbot) ---
 
   // Tabs
   document.getElementById("tab-hydro").addEventListener("click",()=>{
@@ -322,30 +422,25 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 }); // DOMContentLoaded
 
-// Chat send function (unchanged)
+// Chat send function
 function sendMessage() {
   const input = document.getElementById("chat-input");
   const msg = input.value.trim();
   if(!msg) return;
   const chatBox = document.getElementById("chat-box");
-  chatBox.innerHTML += `<div class="user"><b>You:</b> ${msg}</div>`;
+  chatBox.innerHTML += `<div><b>You:</b> ${msg}</div>`;
+  input.value="";
+  // Send to server (mock or real)
   fetch("/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: msg })
-  })
-  .then(res=>res.json())
-  .then(data=>{
-    chatBox.innerHTML += `<div class="bot"><b>Bot:</b> ${data.reply}</div>`;
-    chatBox.scrollTop = chatBox.scrollHeight;
-  })
-  .catch(err=>{
-    console.error(err);
-    chatBox.innerHTML += `<div class="bot"><b>Bot:</b> Sorry, I couldn't get a response.</div>`;
-    chatBox.scrollTop = chatBox.scrollHeight;
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({message: msg})
+  }).then(r=>r.json()).then(data=>{
+      chatBox.innerHTML += `<div><b>Bot:</b> ${data.reply}</div>`;
+      chatBox.scrollTop = chatBox.scrollHeight;
   });
-  input.value = "";
 }
 </script>
+
 </body>
 </html>
